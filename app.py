@@ -1,9 +1,6 @@
+import datetime, re, googlemaps, requests
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
-import datetime
-import requests
-import re
-import googlemaps
 from bearer_token import GOOGLE_TOKEN, BITLY_TOKEN
 
 app = Flask(__name__)
@@ -69,7 +66,7 @@ def navigation(address):
 
 
 def phone_num(phone):
-    return f'https://wa.me/972'+(''.join(i for i in phone if i.isdigit())[-9:])
+    return f'https://wa.me/972' + (''.join(i for i in phone if i.isdigit())[-9:])
 
 
 @app.route("/sms", methods=['POST'])
