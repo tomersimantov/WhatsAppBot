@@ -11,7 +11,7 @@ A 2-way messaging WhatsApp chat bot with various options including URL shortener
 
 ![Navigating](https://i.imgur.com/aypP1Xw.png)
 
->Click-to-chat (Through WhatsApp):
+>Click-to-chat (through WhatsApp):
 
 ![Click-to-chat](https://i.imgur.com/FDKlL8Y.png)
 
