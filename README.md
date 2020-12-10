@@ -7,7 +7,7 @@ A 2-way messaging WhatsApp chat bot with various options including URL shortener
 
 ![shortener](https://i.imgur.com/FbmHVIK.png)
 
->Navigating (Waze & Google):
+>Navigation (Waze & Google):
 
 ![Navigating](https://i.imgur.com/aypP1Xw.png)
 
