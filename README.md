@@ -2,7 +2,6 @@
 
 A 2-way messaging WhatsApp chat bot with various options including URL shortener, navigation, to-do list, click-to-chat, and some communicating. Using Python and Flask.
 
-### Examples:
 >URL Shortener:
 
 ![shortener](https://i.imgur.com/FbmHVIK.png)
