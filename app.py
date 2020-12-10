@@ -12,31 +12,8 @@ def hello():
     return "WhatsApp Bot is online."
 
 
-def task(msg):
-    first_word = msg.split()[0]
-    if first_word == "משימה":
-        msg = msg.replace('משימה', '').lstrip()
-        tasks.append(msg)
-        return "משימה התווספה"
-    elif first_word == "מחק":
-        try:
-            num = int(msg.split()[1])
-        except:
-            return "לא ציינת מספר."
-        print(num, "מספר")
-        if type(num) == int:
-            print(num - 1, "אינדקס למחוק")
-            tasks.pop(num - 1)
-            print(tasks)
-            return "משימה נמחקה"
-    elif first_word == "משימות":
-        tasks_list = ""
-        if not tasks:
-            return "אין משימות."
-        for ind, ele in enumerate(tasks, start=1):
-            tasks_list += f"{ind}. {ele}\n"
-        return tasks_list
-
+def phone_num(phone):
+    return f'https://wa.me/972' + (''.join(i for i in phone if i.isdigit())[-9:])
 
 # shorten a given url
 def url_shortener(url):
@@ -65,8 +42,30 @@ def navigation(address):
            f'{waze_navi}'
 
 
-def phone_num(phone):
-    return f'https://wa.me/972' + (''.join(i for i in phone if i.isdigit())[-9:])
+def task(msg):
+    first_word = msg.split()[0]
+    if first_word == "משימה":
+        msg = msg.replace('משימה', '').lstrip()
+        tasks.append(msg)
+        return "משימה התווספה"
+    elif first_word == "מחק":
+        try:
+            num = int(msg.split()[1])
+        except:
+            return "לא ציינת מספר."
+        print(num, "מספר")
+        if type(num) == int:
+            print(num - 1, "אינדקס למחוק")
+            tasks.pop(num - 1)
+            print(tasks)
+            return "משימה נמחקה"
+    elif first_word == "משימות":
+        tasks_list = ""
+        if not tasks:
+            return "אין משימות."
+        for ind, ele in enumerate(tasks, start=1):
+            tasks_list += f"{ind}. {ele}\n"
+        return tasks_list
 
 
 @app.route("/sms", methods=['POST'])
