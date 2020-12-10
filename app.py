@@ -6,7 +6,6 @@ import re
 import googlemaps
 from bearer_token import GOOGLE_TOKEN, BITLY_TOKEN
 
-
 app = Flask(__name__)
 tasks = []
 
@@ -69,6 +68,10 @@ def navigation(address):
            f'{waze_navi}'
 
 
+def phone_num(phone):
+    return f'https://wa.me/972'+(''.join(i for i in phone if i.isdigit())[-9:])
+
+
 @app.route("/sms", methods=['POST'])
 def reply():
     # fetching the message
@@ -88,10 +91,15 @@ def reply():
     }
 
     # url
-    regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
-    url = re.search(regex, msg)
+    url_regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
+    url = re.search(url_regex, msg)
     if url is not None:
         resp.message(url_shortener(url.group(0)))
+
+    phone_regex = r"\(?\+?[0-9]{1,3}\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})? ?(\w{1,10}\s?\d{1,6})?"
+    phone = re.search(phone_regex, msg)
+    if phone is not None:
+        resp.message(phone_num(phone.group(0)))
 
     elif msg.split()[0] in ["משימה", "מחק", "משימות"]:
         task_list = task(msg)
