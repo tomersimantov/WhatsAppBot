@@ -18,4 +18,4 @@ A 2-way messaging WhatsApp chat bot with various options including URL shortener
 
 ![Communicating](https://i.imgur.com/7ke8snl.png)
 
-<img src="https://pastepixel.com/image/aAS3FEw5WUueX9DtA5tN.png" alt=""/>
+<img src="https://pastepixel.com/image/e99bcVavPt8aztyU9Qdt.png" alt=""/>
